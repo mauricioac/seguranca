@@ -6,10 +6,10 @@ if (process.argv.length < 6) {
   return;
 }
 
-var algorithm = process.argv[2];
+var algo = process.argv[2];
 var op = process.argv[3];
-var file = process.argv[4];
-var key = process.argv[5];
+var entrada = process.argv[4];
+var chave = process.argv[5];
 
 function gravaSaida(filename, codigo) {
   fs.open(filename, "w+", function(err, fd) {
@@ -25,27 +25,27 @@ function gravaSaida(filename, codigo) {
   });
 }
 
-fs.open(file, "r", function(err, f) {
+fs.open(entrada, "r", function(err, f) {
   if (err) {
     return;
   }
 
-  fs.readFile(file, function(err, data) {
+  fs.readFile(entrada, function(err, data) {
     if (err) {
       return;
     }
 
     data = data.toString();
 
-    switch(algorithm) {
+    switch(algo) {
       case "cesar":
-        var codigo = cesar[op](data, parseInt(key, 10));
+        var codigo = cesar[op](data, parseInt(chave, 10));
 
         var saida = "cesar_" + op + ".txt";
         gravaSaida(saida, codigo);
         break;
       case "transp":
-        var codigo = transp[op](data, parseInt(key, 10));
+        var codigo = transp[op](data, parseInt(chave, 10));
 
         var saida = "transp_" + op + ".txt";
         gravaSaida(saida, codigo);

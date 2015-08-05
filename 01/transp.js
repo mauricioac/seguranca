@@ -36,12 +36,13 @@ module.exports = {
     return str;
   },
   decifra: function(string, chave) {
-    var matriz = [[]];
-    var linha = 0;
+    var matriz = [];
+    var linha = -1;
+    var i;
 
     teto = string.length / chave;
 
-    for (var i = 0; i < string.length; i++) {
+    for (i = 0; i < string.length; i++) {
       if (i % teto == 0) {
         matriz.push([]);
         linha++;
@@ -58,6 +59,6 @@ module.exports = {
       }
     }
 
-    return str;
+    return str.trim();
   }
 }
