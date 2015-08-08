@@ -16,5 +16,8 @@ module.exports = {
     }
 
     return newData;
+  },
+  chave: function(chave, callback) {
+    callback(parseInt(chave, 10));
   }
 }

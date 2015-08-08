@@ -60,5 +60,8 @@ module.exports = {
     }
 
     return str.trim();
+  },
+  chave: function(chave, callback) {
+    callback(parseInt(chave, 10));
   }
 }

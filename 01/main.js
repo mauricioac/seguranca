@@ -1,6 +1,4 @@
 var fs = require('fs');
-var cesar = require('./cesar');
-var transp = require('./transp');
 
 if (process.argv.length < 6) {
   return;
@@ -35,21 +33,12 @@ fs.open(entrada, "r", function(err, f) {
       return;
     }
 
-    data = data.toString();
+    var algoritmo = require("./" + algo);
+    algoritmo.chave(chave, function(a) {
+      var codigo = algoritmo[op](data.toString(), a);
 
-    switch(algo) {
-      case "cesar":
-        var codigo = cesar[op](data, parseInt(chave, 10));
-
-        var saida = "cesar_" + op + ".txt";
-        gravaSaida(saida, codigo);
-        break;
-      case "transp":
-        var codigo = transp[op](data, parseInt(chave, 10));
-
-        var saida = "transp_" + op + ".txt";
-        gravaSaida(saida, codigo);
-        break;
-    }
+      var saida = algo + "_" + op + ".txt";
+      gravaSaida(saida, codigo);
+    });
   });
 });
