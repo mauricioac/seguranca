@@ -15,7 +15,7 @@ function gravaSaida(filename, codigo) {
       return;
     }
 
-    fs.write(fd, codigo, 0, codigo.length, function(err, written, buffer) {
+    fs.write(fd, codigo, 0, "binary", function(err, written, buffer) {
       if (err) {
         return;
       }
@@ -28,7 +28,7 @@ fs.open(entrada, "r", function(err, f) {
     return;
   }
 
-  fs.readFile(entrada, function(err, data) {
+  fs.readFile(entrada, {encoding: "binary"}, function(err, data) {
     if (err) {
       return;
     }
