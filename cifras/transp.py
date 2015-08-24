@@ -41,17 +41,18 @@ class Transposicao:
       i += 1
 
     r = i % teto
-    while r < teto:
-      matriz[linha].append(" ")
-      r += 1
+    if r > 0:
+      while r < teto:
+        matriz[linha].append(" ")
+        r += 1
 
-    str = ""
+    str = []
 
     for j in range(0, len(matriz[0])):
       for i in range(0, len(matriz)):
-        str += matriz[i][j]
+        str.append(matriz[i][j])
 
-    return str
+    return "".join(str)
   def chave(self, chave):
     return int(chave)
   def quebraEmClaro(self, claro, criptografado):
@@ -66,3 +67,17 @@ class Transposicao:
       if not diferente:
         return i
       i += 1
+  def quebraEscuro(self, criptografado, dicionario):
+    ocorrencias = 0
+    chave = 1
+
+    for i in range(1, 10):
+      codigo = self.decifra(criptografado, i)
+      palavras = set(codigo.split())
+      oco = len(palavras & set(dicionario))
+
+      if oco > ocorrencias:
+        chave = i
+        ocorrencias = oco
+
+    return chave
