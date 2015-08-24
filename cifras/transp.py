@@ -71,7 +71,7 @@ class Transposicao:
     ocorrencias = 0
     chave = 1
 
-    for i in range(1, 10):
+    for i in range(1, len(criptografado)):
       codigo = self.decifra(criptografado, i)
       palavras = set(codigo.split())
       oco = len(palavras & set(dicionario))
