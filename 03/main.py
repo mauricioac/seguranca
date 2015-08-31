@@ -3,7 +3,7 @@ path.append("../cifras")
 from cesar import Cesar
 from transp import Transposicao
 from vigenere import Vigenere
-from nltk.corpus import words
+from nltk.corpus import brown
 
 script,algo,entrada = argv
 
@@ -30,7 +30,7 @@ with open(entrada, "r+b") as f:
     obj = Vigenere()
 
   novaLista = []
-  for a in words.words():
+  for a in brown.words(fileids=['cc17', 'ca16']):
     novaLista.append(str(a))
 
   print obj.quebraEscuro(texto, novaLista)

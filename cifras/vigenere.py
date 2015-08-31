@@ -48,7 +48,7 @@ class Vigenere:
     all = []
     all = lower_a + upper_a + num
 
-    for r in range(1, 7):
+    for r in range(1, 5):
       for s in itertools.product(all, repeat=r):
         codigo = self.decifra(criptografado, ''.join(s))
         palavras = set(codigo.split())
